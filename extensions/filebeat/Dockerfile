@@ -1,3 +1,3 @@
-ARG ELASTIC_VERSION
+ARG ELK_VERSION
 
-FROM docker.elastic.co/beats/filebeat:${ELASTIC_VERSION}
+FROM docker.elastic.co/beats/filebeat:${ELK_VERSION}

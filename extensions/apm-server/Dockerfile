@@ -1,3 +1,3 @@
-ARG ELASTIC_VERSION
+ARG ELK_VERSION
 
-FROM docker.elastic.co/apm/apm-server:${ELASTIC_VERSION}
+FROM docker.elastic.co/apm/apm-server:${ELK_VERSION}
