@@ -1,7 +1,6 @@
-version: '3.7'
+version: "3.7"
 
 services:
-
   # The 'setup' service runs a one-off script which initializes the
   # 'logstash_internal' and 'kibana_system' users inside Elasticsearch with the
   # values of the passwords defined in the '.env' file.
@@ -33,8 +32,8 @@ services:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,z
       - elasticsearch:/usr/share/elasticsearch/data:z
     ports:
-      - "9200:9200"
-      - "9300:9300"
+      - "4400:9200"
+      - "4401:9300"
     environment:
       ES_JAVA_OPTS: -Xmx256m -Xms256m
       # Bootstrap password.
@@ -55,11 +54,12 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
+      - /home/pmsdev/volumes/server/logs:/home/pmsdev/volumes/server/logs
     ports:
-      - "5044:5044"
-      - "5000:5000/tcp"
-      - "5000:5000/udp"
-      - "9600:9600"
+      - "4402:5044"
+      - "4403:5000/tcp"
+      - "4403:5000/udp"
+      - "4404:9600"
     environment:
       LS_JAVA_OPTS: -Xmx256m -Xms256m
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
@@ -76,7 +76,7 @@ services:
     volumes:
       - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
     ports:
-      - "5601:5601"
+      - "4405:5601"
     environment:
       KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
     networks:
