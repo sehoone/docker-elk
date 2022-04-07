@@ -55,7 +55,7 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
-      - /home/pmsdev/volumes/server/logs:/home/pmsdev/volumes/server/logs
+      - /home/spndev/osp-volumes/ospadmin-dev/logs:/home/spndev/osp-volumes/ospadmin-dev/logs
     ports:
       - "4402:5044"
       - "4403:5000/tcp"
