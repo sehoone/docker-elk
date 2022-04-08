@@ -28,6 +28,7 @@ services:
       context: elasticsearch/
       args:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
+    user: "1003:1003"
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,z
       - /home/spndev/osp-volumes/ospadmin-dev/elasticsearch:/usr/share/elasticsearch/data:z
