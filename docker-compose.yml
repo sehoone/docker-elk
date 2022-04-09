@@ -81,7 +81,6 @@ services:
       - "4405:5601"
     environment:
       KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
-      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
     networks:
       - elk
     depends_on:
